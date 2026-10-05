@@ -1,0 +1,34 @@
+import type { Metadata } from 'next';
+import { Geist, Geist_Mono } from 'next/font/google';
+import './globals.css';
+import { AppProvider } from '@/components/layout/AppProvider';
+
+const geistSans = Geist({
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
+});
+
+const geistMono = Geist_Mono({
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
+});
+
+export const metadata: Metadata = {
+  title: 'Il An Noor Foundation | Beneficiary Evaluation & Priority System (INBPI)',
+  description:
+    'Multidimensional decision-support system to evaluate beneficiary priority, calculate transparent priority scores, and inform charitable fund allocation.',
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+      <body className="min-h-full flex flex-col">
+        <AppProvider>{children}</AppProvider>
+      </body>
+    </html>
+  );
+}
